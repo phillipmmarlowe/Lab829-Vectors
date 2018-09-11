@@ -59,7 +59,7 @@ JSVector.prototype.sub = function(v2){
 
 // Class method to return a new vector that is the sum of two vectors
 JSVector.addGetNew = function(v1,v2){
-  var v3;
+  var v3 = new JSVector();
   v3.x=v1.x+v2.x;
   v3.y=v1.y+v2.y;
   return v3;
@@ -67,7 +67,7 @@ JSVector.addGetNew = function(v1,v2){
 
 // Class method to return a new vector that is the difference of two vectors
 JSVector.subGetNew = function(v1,v2){
-  var v3;
+  var v3 = new JSVector();
   v3.x=v1.x+v2.x;
   v3.y=v1.y+v2.y;
   return v3;
@@ -138,6 +138,7 @@ JSVector.prototype.copy = function(){
 // Override inherited toString() to describe this instance
 JSVector.prototype.toString = function() {
   var angle = this.getDirection();
+  angle*180/Math.PI;
   var mag = this.getMagnitude();
   return 'Angle: ' + angle.toFixed(2) + ' Magnitude: ' + mag.toFixed(2) + ' X: ' + this.x.toFixed(2) + 'Y: ' + this.y.toFixed(2);
 	}

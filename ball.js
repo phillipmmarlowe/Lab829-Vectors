@@ -1,9 +1,10 @@
 
 
-function Ball(loc, vel, rad){
+function Ball(loc, vel, rad, acc){
   this.loc = loc;
   this.vel = vel;
   this.rad = rad;
+  this.acc = acc;
 }
 
 Ball.prototype.run = function(){

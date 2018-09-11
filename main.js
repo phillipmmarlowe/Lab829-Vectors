@@ -13,10 +13,10 @@ function init(){
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   canvas.style.border = 'solid black 5px';
-  canvas.style.backgroundColor = 'rgba(12,15,25, .9)';
+  canvas.style.backgroundColor = 'rgba(12,15,20, .9)';
   // get the context
   ctx = canvas.getContext('2d'); // This is the context
-  makeBalls(83);
+  makeBalls(10);
 
   animate();
 }
@@ -24,7 +24,7 @@ function init(){
 function animate(){
 
   requestAnimationFrame(animate);
-  ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+  //ctx.clearRect(0,0,window.innerWidth, window.innerHeight); //add contrails by removing this line
   for(let i = 0; i < balls.length; i++){
     balls[i].run();
   }
@@ -36,10 +36,13 @@ function makeBalls(numBalls){
     var x = Math.random()*window.innerWidth;
     var y = Math.random()*window.innerHeight;
     var loc = new JSVector(x, y);
-    var dx = Math.random()*10-5;
-    var dy = Math.random()*10-5;
+    var dx = Math.random()*5-2;
+    var dy = Math.random()*5-2;
     var vel = new JSVector(dx, dy);
-    var r = Math.random()*20 + 10;
-    balls.push(new Ball(loc, vel, r))
+    var r = Math.random()*5 + 10;
+    var ax =Math.random();
+    var ay =Math.random();
+    var acc = new JSVector(ax, ay);
+    balls.push(new Ball(loc, vel, r, acc))
   }
 }
