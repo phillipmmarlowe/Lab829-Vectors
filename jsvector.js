@@ -103,12 +103,12 @@ JSVector.prototype.limit = function(lim){
 
 // Get the distance between this vector and another one
 JSVector.prototype.distance = function(v2){
-  return Math.hypot(v2.x-this.x, v2.y-this.y);
+  return Math.sqrt(this.distanceSquared(v2));
 }
 
 // Get square of the distance between this vector and another one
 JSVector.prototype.distanceSquared = function(v2){
-  return Math.pow(this.distance(v2), 2);
+  return Math.pow(v2.x-this.x,2)+Math.pow(v2.y-this.y,2);
 }
 
 // Rotate this vector by some number of radians
@@ -137,5 +137,7 @@ JSVector.prototype.copy = function(){
 
 // Override inherited toString() to describe this instance
 JSVector.prototype.toString = function() {
-
+  var angle = this.getDirection();
+  var mag = this.getMagnitude();
+  return 'Angle: ' + angle.toFixed(2) + ' Magnitude: ' + mag.toFixed(2) + ' X: ' + this.x.toFixed(2) + 'Y: ' + this.y.toFixed(2);
 	}
